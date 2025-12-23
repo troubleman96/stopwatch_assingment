@@ -1,25 +1,25 @@
- let minutes = 0;
-    let seconds = 0;
-    let timer = null;
+let minutes = 0;
+let seconds = 0;
+let timer = null;
 
-    function start() {
+function start() {
       if (timer !== null) return; 
       timer = setInterval(runStopwatch, 1000); 
     }
 
-    function stop() {
+function stop() {
       clearInterval(timer);
       timer = null;
     }
 
-    function reset() {
+function reset() {
       stop();
       minutes = 0;
       seconds = 0;
       updateDisplay();
     }
 
-    function runStopwatch() {
+function runStopwatch() {
       seconds++;
       if (seconds === 60) {
         seconds = 0;
@@ -28,12 +28,12 @@
       updateDisplay();
     }
 
-    function updateDisplay() {
+function updateDisplay() {
       // Logic fix: correctly target the ID "display"
       document.getElementById("display").innerText =
         format(minutes) + ":" + format(seconds);
     }
 
-    function format(value) {
+function format(value) {
       return value < 10 ? "0" + value : value;
     }
